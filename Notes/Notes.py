@@ -4,12 +4,12 @@ import datetime
 
 filename = "notes.json"
 
-# Функция для создания нового файла notes.json, если его нет
+
 def create_notes_file():
     with open(filename, "w") as file:
         json.dump([], file)
 
-# Функция для чтения заметок из файла
+
 def load_notes():
     try:
         with open(filename, "r") as file:
@@ -19,7 +19,7 @@ def load_notes():
         notes = []
     return notes
 
-# Функция для создания новой заметки
+
 def create_note(notes, title, message):
     note_id = len(notes) + 1
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -27,12 +27,12 @@ def create_note(notes, title, message):
     notes.append(note)
     return notes
 
-# Функция для сохранения заметок в файл
+
 def save_notes(notes):
     with open(filename, "w") as file:
         json.dump(notes, file, indent=4)
         
-# Функция для редактирования заметки
+
 def edit_note(notes, note_id, new_title, new_message):
     for note in notes:
         if note["id"] == note_id:
@@ -44,12 +44,12 @@ def edit_note(notes, note_id, new_title, new_message):
         print("Заметка с указанным ID не найдена.")
     return notes
 
-# Функция для удаления заметки
+
 def delete_note(notes, note_id):
     notes = [note for note in notes if note["id"] != note_id]
     return notes
 
-# Функция для показа содержимого заметки по ID
+
 def show_note(notes, note_id):
     for note in notes:
         if note["id"] == note_id:
@@ -58,7 +58,7 @@ def show_note(notes, note_id):
     else:
         print("Заметка с указанным ID не найдена.")
 
-# Основная логика программы
+
 def main():
     notes = load_notes()
 
